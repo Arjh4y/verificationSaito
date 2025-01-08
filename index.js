@@ -29,7 +29,7 @@ app.listen(port, () => {
     );
 });
 
-const statusMessages = ['alagad ni saito', 'kupal ka boss!'];
+const statusMessages = ['hi', 'kupal ka boss!'];
 const statusTypes = ['dnd', 'idle'];
 let currentStatusIndex = 0;
 let currentTypeIndex = 0;
