@@ -29,7 +29,7 @@ app.listen(port, () => {
     );
 });
 
-const statusMessages = ['alagad ni koni', 'mua ka sakin boss'];
+const statusMessages = ['alagad ni saito', 'kupal ka boss!'];
 const statusTypes = ['dnd', 'idle'];
 let currentStatusIndex = 0;
 let currentTypeIndex = 0;
@@ -85,49 +85,4 @@ client.once('ready', () => {
     setInterval(updateStatus, 10000);
     heartbeat();
 });
-
-client.on('messageCreate', async (message) => {
-    if (message.author.bot) return;
-
-    if (message.content.toLowerCase() === '!gcash') {
-        const gcashQrUrl = 'https://raw.githubusercontent.com/koniqtt/koniwho/refs/heads/main/koni.gif'; 
-
-        const gcashEmbed = new EmbedBuilder() 
-            .setTitle('GCash Account Info')
-            .setDescription('Here is my GCash account info:\nAccount Name: Koni \nAccount Number: 9009090')
-            .setImage(gcashQrUrl); 
-
-        const sentMessage = await message.channel.send({ embeds: [gcashEmbed] });
-
-        await message.delete();
-
-        setTimeout(() => {
-            sentMessage.delete()
-                .then(() => console.log('Embed message deleted'))
-                .catch((error) => console.error('Error deleting message:', error));
-        }, 30000); // 30 seconds
-    } 
-
-    if (message.content.toLowerCase() === '!paypal') {
-        const paypalQrUrl = 'https://raw.githubusercontent.com/koniqtt/koniwho/refs/heads/main/koni.gif'; 
-
-        const paypalEmbed = new EmbedBuilder() 
-            .setTitle('PayPal Account Info')
-            .setDescription('Here is my PayPal account info:\nPayPal Email: @example.com')
-            .setImage(paypalQrUrl); 
-
-        const sentMessage = await message.channel.send({ embeds: [paypalEmbed] });
-
-        await message.delete();
-
-        setTimeout(() => {
-            sentMessage.delete()
-                .then(() => console.log('Embed message deleted'))
-                .catch((error) => console.error('Error deleting message:', error));
-        }, 30000);
-    }
-});
-
-
-
 login();
